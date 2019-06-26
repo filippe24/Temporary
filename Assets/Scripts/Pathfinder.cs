@@ -20,14 +20,21 @@ public class Pathfinder : MonoBehaviour
         Vector2Int.left
     };
     // Start is called before the first frame update
-     public List<Waypoint> GetPath()
+    public List<Waypoint> GetPath()
+    {
+        if (path.Count == 0)
+        {
+            CalculatePath();
+        }
+        return path;
+    }
+
+    private void CalculatePath()
     {
         LoadBlocks();
         ColorStartAndEnd();
         BreadthFirstSearch();
         CreatePath();
-        return path;
-
     }
     private void ColorStartAndEnd()
     {
